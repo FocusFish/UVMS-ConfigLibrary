@@ -9,18 +9,14 @@ the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the impl
 FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details. You should have received a
 copy of the GNU General Public License along with the IFDM Suite. If not, see <http://www.gnu.org/licenses/>.
  */
-package eu.europa.ec.fisheries.uvms.config.event;
+package fish.focus.uvms.config.constants;
 
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
+public class ConfigConstants {
 
-import javax.inject.Qualifier;
+    public static final String CONNECTION_TYPE_MESSAGE_LISTENER = "javax.jms.MessageListener";
+    public static final String DESTINATION_TYPE_TOPIC = "javax.jms.Topic";
 
-@Qualifier
-@Retention(RetentionPolicy.RUNTIME)
-@Target({ ElementType.METHOD, ElementType.FIELD, ElementType.PARAMETER, ElementType.TYPE })
-public @interface ConfigSettingUpdatedEvent {
+    public static final String CONFIG_STATUS_TOPIC = "jms/topic/ConfigStatus";
+    public static final String CONFIG_STATUS_TOPIC_NAME = "ConfigStatus";
 
 }

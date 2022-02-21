@@ -9,24 +9,24 @@ the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the impl
 FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details. You should have received a
 copy of the GNU General Public License along with the IFDM Suite. If not, see <http://www.gnu.org/licenses/>.
  */
-package eu.europa.ec.fisheries.uvms.config.service;
+package fish.focus.uvms.config.service;
 
-import eu.europa.ec.fisheries.schema.config.module.v1.PullSettingsResponse;
-import eu.europa.ec.fisheries.schema.config.module.v1.PushSettingsResponse;
-import eu.europa.ec.fisheries.schema.config.module.v1.SettingEventType;
-import eu.europa.ec.fisheries.schema.config.types.v1.PullSettingsStatus;
-import eu.europa.ec.fisheries.schema.config.types.v1.SettingType;
-import eu.europa.ec.fisheries.uvms.config.constants.ConfigHelper;
-import eu.europa.ec.fisheries.uvms.config.event.ConfigSettingEvent;
-import eu.europa.ec.fisheries.uvms.config.event.ConfigSettingEventType;
-import eu.europa.ec.fisheries.uvms.config.event.ConfigSettingUpdatedEvent;
-import eu.europa.ec.fisheries.uvms.config.exception.ConfigMessageException;
-import eu.europa.ec.fisheries.uvms.config.exception.ConfigServiceException;
-import eu.europa.ec.fisheries.uvms.config.message.ConfigMessageConsumer;
-import eu.europa.ec.fisheries.uvms.config.message.ConfigMessageProducer;
-import eu.europa.ec.fisheries.uvms.config.model.mapper.JAXBMarshaller;
-import eu.europa.ec.fisheries.uvms.config.model.mapper.ModuleRequestMapper;
-import eu.europa.ec.fisheries.uvms.config.model.mapper.ModuleResponseMapper;
+import fish.focus.schema.config.module.v1.PullSettingsResponse;
+import fish.focus.schema.config.module.v1.PushSettingsResponse;
+import fish.focus.schema.config.module.v1.SettingEventType;
+import fish.focus.schema.config.types.v1.PullSettingsStatus;
+import fish.focus.schema.config.types.v1.SettingType;
+import fish.focus.uvms.config.model.mapper.JAXBMarshaller;
+import fish.focus.uvms.config.model.mapper.ModuleRequestMapper;
+import fish.focus.uvms.config.model.mapper.ModuleResponseMapper;
+import fish.focus.uvms.config.constants.ConfigHelper;
+import fish.focus.uvms.config.event.ConfigSettingEvent;
+import fish.focus.uvms.config.event.ConfigSettingEventType;
+import fish.focus.uvms.config.event.ConfigSettingUpdatedEvent;
+import fish.focus.uvms.config.exception.ConfigMessageException;
+import fish.focus.uvms.config.exception.ConfigServiceException;
+import fish.focus.uvms.config.message.ConfigMessageConsumer;
+import fish.focus.uvms.config.message.ConfigMessageProducer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

@@ -9,34 +9,29 @@ the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the impl
 FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details. You should have received a
 copy of the GNU General Public License along with the IFDM Suite. If not, see <http://www.gnu.org/licenses/>.
  */
-package eu.europa.ec.fisheries.uvms.config.service;
+package fish.focus.uvms.config.service;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import fish.focus.uvms.config.exception.ConfigServiceException;
 
-import javax.annotation.PostConstruct;
-import javax.ejb.EJB;
-import javax.ejb.Singleton;
-import javax.ejb.Startup;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
+public class PingTask implements Runnable {
+    final static Logger LOG = LoggerFactory.getLogger(PingTask.class);
 
-@Singleton
-@Startup
-public class PingTimer {
-
-    private static final Logger LOG = LoggerFactory.getLogger(PingTimer.class);
-
-    @EJB
     private UVMSConfigService configService;
 
-    @PostConstruct
-    public void sendPing() {
-        LOG.info("PingTimer init");
-        ScheduledExecutorService executor = Executors.newScheduledThreadPool(1);
-        PingTask checkCommunicationTask = new PingTask(configService);
-        executor.scheduleWithFixedDelay(checkCommunicationTask, 5, 5, TimeUnit.MINUTES);
+    PingTask(UVMSConfigService configService) {
+        this.configService = configService;
     }
 
+    @Override
+    public void run() {
+        try {
+            LOG.info("Ping time arrived!");
+            configService.sendPing();
+        }
+        catch (ConfigServiceException e) {
+            LOG.error("[ Error when sending ping to Config. ] {}", e.getMessage());
+        }
+    }
 }

@@ -9,16 +9,16 @@ the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the impl
 FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details. You should have received a
 copy of the GNU General Public License along with the IFDM Suite. If not, see <http://www.gnu.org/licenses/>.
  */
-package eu.europa.ec.fisheries.uvms.config.message;
+package fish.focus.uvms.config.message;
 
-import eu.europa.ec.fisheries.schema.config.module.v1.ConfigTopicBaseRequest;
-import eu.europa.ec.fisheries.schema.config.module.v1.PushModuleSettingMessage;
-import eu.europa.ec.fisheries.schema.config.types.v1.SettingType;
-import eu.europa.ec.fisheries.uvms.config.constants.ConfigConstants;
-import eu.europa.ec.fisheries.uvms.config.constants.ConfigHelper;
-import eu.europa.ec.fisheries.uvms.config.exception.ConfigServiceException;
-import eu.europa.ec.fisheries.uvms.config.model.mapper.JAXBMarshaller;
-import eu.europa.ec.fisheries.uvms.config.service.UVMSConfigService;
+import fish.focus.schema.config.module.v1.ConfigTopicBaseRequest;
+import fish.focus.schema.config.module.v1.PushModuleSettingMessage;
+import fish.focus.schema.config.types.v1.SettingType;
+import fish.focus.uvms.config.model.mapper.JAXBMarshaller;
+import fish.focus.uvms.config.constants.ConfigConstants;
+import fish.focus.uvms.config.constants.ConfigHelper;
+import fish.focus.uvms.config.exception.ConfigServiceException;
+import fish.focus.uvms.config.service.UVMSConfigService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

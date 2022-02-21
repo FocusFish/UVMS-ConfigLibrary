@@ -9,29 +9,40 @@ the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the impl
 FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details. You should have received a
 copy of the GNU General Public License along with the IFDM Suite. If not, see <http://www.gnu.org/licenses/>.
  */
-package eu.europa.ec.fisheries.uvms.config.service;
+package fish.focus.uvms.config.service;
 
-import eu.europa.ec.fisheries.uvms.config.exception.ConfigServiceException;
+import javax.annotation.PostConstruct;
+import javax.ejb.Singleton;
+import javax.ejb.Startup;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import fish.focus.uvms.config.exception.ConfigServiceException;
+import javax.ejb.EJB;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
-public class PingTask implements Runnable {
-    final static Logger LOG = LoggerFactory.getLogger(PingTask.class);
+@Singleton
+@Startup
+public class ConfigInitializer {
 
+    private static final Logger LOG = LoggerFactory.getLogger(ConfigInitializer.class);
+
+    @EJB
     private UVMSConfigService configService;
 
-    PingTask(UVMSConfigService configService) {
-        this.configService = configService;
-    }
-
-    @Override
-    public void run() {
-        try {
-            LOG.info("Ping time arrived!");
-            configService.sendPing();
-        }
-        catch (ConfigServiceException e) {
-            LOG.error("[ Error when sending ping to Config. ] {}", e.getMessage());
-        }
+    @PostConstruct
+    protected void startup() {
+        ExecutorService executor = Executors.newFixedThreadPool(1);
+        executor.submit(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    configService.syncSettingsWithConfig();
+                } catch (ConfigServiceException e) {
+                    LOG.error("[ Error when synchronizing settings with Config at startup. ]");
+                }
+            }
+        });
     }
 }

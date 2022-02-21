@@ -9,14 +9,10 @@ the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the impl
 FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details. You should have received a
 copy of the GNU General Public License along with the IFDM Suite. If not, see <http://www.gnu.org/licenses/>.
  */
-package eu.europa.ec.fisheries.uvms.config.constants;
+package fish.focus.uvms.config.event;
 
-public class ConfigConstants {
-
-    public static final String CONNECTION_TYPE_MESSAGE_LISTENER = "javax.jms.MessageListener";
-    public static final String DESTINATION_TYPE_TOPIC = "javax.jms.Topic";
-
-    public static final String CONFIG_STATUS_TOPIC = "jms/topic/ConfigStatus";
-    public static final String CONFIG_STATUS_TOPIC_NAME = "ConfigStatus";
-
+public enum ConfigSettingEventType {
+	STORE,
+	UPDATE,
+	DELETE;
 }
