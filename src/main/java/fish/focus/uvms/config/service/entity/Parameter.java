@@ -9,8 +9,11 @@ the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the impl
 FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details. You should have received a
 copy of the GNU General Public License along with the IFDM Suite. If not, see <http://www.gnu.org/licenses/>.
  */
-package eu.europa.ec.fisheries.uvms.config.service.entity;
+package fish.focus.uvms.config.service.entity;
 
+import static fish.focus.uvms.config.service.entity.Parameter.FIND_BY_ID;
+import static fish.focus.uvms.config.service.entity.Parameter.LIST_ALL;
+import static fish.focus.uvms.config.service.entity.Parameter.LIST_ALL_BY_IDS;
 import java.io.Serializable;
 
 import javax.persistence.Column;
@@ -18,10 +21,6 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-
-import static eu.europa.ec.fisheries.uvms.config.service.entity.Parameter.FIND_BY_ID;
-import static eu.europa.ec.fisheries.uvms.config.service.entity.Parameter.LIST_ALL;
-import static eu.europa.ec.fisheries.uvms.config.service.entity.Parameter.LIST_ALL_BY_IDS;
 
 /**
  * The persistent class for the parameter database table.

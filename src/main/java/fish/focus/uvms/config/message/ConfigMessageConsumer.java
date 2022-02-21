@@ -9,20 +9,14 @@ the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the impl
 FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details. You should have received a
 copy of the GNU General Public License along with the IFDM Suite. If not, see <http://www.gnu.org/licenses/>.
  */
-package eu.europa.ec.fisheries.uvms.config.constants;
-
-import java.util.List;
+package fish.focus.uvms.config.message;
 
 import javax.ejb.Local;
-import javax.persistence.EntityManager;
+import fish.focus.uvms.config.exception.ConfigMessageException;
 
 @Local
-public interface ConfigHelper {
+public interface ConfigMessageConsumer {
 
-	List<String> getAllParameterKeys();
-
-	String getModuleName();	
-	
-	EntityManager getEntityManager();
+    <T> T getConfigMessage(String correlationId, Class<T> type) throws ConfigMessageException;
 
 }

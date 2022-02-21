@@ -9,41 +9,34 @@ the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the impl
 FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details. You should have received a
 copy of the GNU General Public License along with the IFDM Suite. If not, see <http://www.gnu.org/licenses/>.
  */
-package eu.europa.ec.fisheries.uvms.config.service;
-
-import javax.annotation.PostConstruct;
-import javax.ejb.Singleton;
-import javax.ejb.Startup;
+package fish.focus.uvms.config.service;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import eu.europa.ec.fisheries.uvms.config.exception.ConfigServiceException;
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
-import java.util.concurrent.ExecutorService;
+import javax.ejb.Singleton;
+import javax.ejb.Startup;
 import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 @Singleton
 @Startup
-public class ConfigInitializer {
+public class PingTimer {
 
-    private static final Logger LOG = LoggerFactory.getLogger(ConfigInitializer.class);
+    private static final Logger LOG = LoggerFactory.getLogger(PingTimer.class);
 
     @EJB
     private UVMSConfigService configService;
 
     @PostConstruct
-    protected void startup() {
-        ExecutorService executor = Executors.newFixedThreadPool(1);
-        executor.submit(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    configService.syncSettingsWithConfig();
-                } catch (ConfigServiceException e) {
-                    LOG.error("[ Error when synchronizing settings with Config at startup. ]");
-                }
-            }
-        });
+    public void sendPing() {
+        LOG.info("PingTimer init");
+        ScheduledExecutorService executor = Executors.newScheduledThreadPool(1);
+        PingTask checkCommunicationTask = new PingTask(configService);
+        executor.scheduleWithFixedDelay(checkCommunicationTask, 5, 5, TimeUnit.MINUTES);
     }
+
 }
