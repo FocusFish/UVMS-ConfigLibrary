@@ -3,14 +3,14 @@
     <groupId>fish.focus.uvms.lib</groupId>
     <artifactId>uvms-config</artifactId>
     <packaging>jar</packaging>
-    <version>4.1.7</version>
+    <version>4.2.0</version>
     <name>uvms-config</name>
     <description>UnionVMS configuration management.</description>
 
     <parent>
         <groupId>fish.focus.uvms.maven</groupId>
         <artifactId>uvms-pom</artifactId>
-        <version>3.19</version>
+        <version>3.33</version>
     </parent>
 
     <properties>
