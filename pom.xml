@@ -3,7 +3,7 @@
     <groupId>fish.focus.uvms.lib</groupId>
     <artifactId>uvms-config</artifactId>
     <packaging>jar</packaging>
-    <version>4.1.8-SNAPSHOT</version>
+    <version>4.2.0</version>
     <name>uvms-config</name>
     <description>UnionVMS configuration management.</description>
 
