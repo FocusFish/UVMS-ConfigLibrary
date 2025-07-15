@@ -17,7 +17,7 @@
         <project.scm.id>github</project.scm.id>
         <scm.connection>scm:git:https://github.com/FocusFish/UVMS-UVMSConfigLibrary.git</scm.connection>
         <scm.url>scm:git:https://github.com/FocusFish/UVMS-UVMSConfigLibrary.git</scm.url>
-		<config.model.version>4.3.12</config.model.version>
+		<config.model.version>4.4.1</config.model.version>
         <project.scm.id>github</project.scm.id>
         <uvms.pom.version>3.16</uvms.pom.version>
     </properties>
